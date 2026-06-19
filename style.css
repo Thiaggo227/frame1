@@ -1,0 +1,1237 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter', sans-serif;
+    background:#f7f7f7;
+    color: #3e3e3e;;
+    overflow-x: hidden; /* Evita scrolls laterais indesejados */
+}
+
+header{
+    background-color: #ffffffdd;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1000;
+    padding: 10px;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px #0000000a;
+    /* Adiciona o efeito de desfoque no fundo */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Garante compatibilidade com o navegador Safari (iOS/Mac) */
+}
+
+.logo{
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-left: 20px;
+}
+/* Estilo para o username ao lado do logo em telas grandes */
+.logo .nav-username {
+    font-size: 14px;
+    font-weight: 500;
+    color: #3e3e3e;
+    margin-left: 10px;
+}
+.menu {
+    display: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.close-menu {
+    display: none;
+}
+
+nav{
+    display:flex;
+    gap:35px;
+}
+
+nav a{
+    position: relative;
+    text-decoration: none;
+    color: #3e3e3e;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+
+nav a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 1px;
+    background: #111;
+    transition: width 0.3s ease;
+}
+
+nav a:hover{
+    color: #111;
+}
+
+nav a:hover::after{
+    width: 100%;
+}
+#nav-logout{
+    color: #ff0000;
+}
+
+.actions{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.actions button{
+    border:none;
+    border-radius: 3px;
+    background-color: #3e3e3e;
+    color: #f7f7f7;
+    padding:10px 15px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    cursor:pointer;
+    margin-right: 50px;
+    transition: 0.2s;
+}
+.actions button:hover{
+    background-color: #141414;
+}
+
+
+.hero{
+    display:flex;
+    align-items:center;
+    padding: 60px 70px 0; /* Espaço para o header fixo */
+}
+
+
+.content .paragrafoPost{
+    margin-top: -30px;
+    max-width:550px;
+    font-size:15px;
+    line-height:1.8;
+    color: #3e3e3e;;
+}
+.textFeed {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 18px; /* Ajuste o tamanho da fonte se necessário */
+    color: #333;     /* Ajuste a cor do texto se necessário */
+}
+
+/* Cria as linhas antes e depois do span */
+.textFeed::before,
+.textFeed::after {
+    content: "";
+    flex: 1; /* Faz as linhas preencherem todo o espaço disponível nas laterais */
+    border-bottom: 1px solid #3e3e3e; /* Espessura e cor do traço (ajuste se quiser mais escuro) */
+    margin: 0 20px; /* Espaçamento entre o traço e o texto (20px de cada lado) */
+}
+
+/* RECENT */
+.recent{
+    padding:0 70px 80px;
+}
+
+.recent-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:18px;
+    border-bottom:1px solid #ddd;
+}
+
+
+.gallery{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap: 30px;
+}
+
+.card {
+    /* Removemos o height fixo para que o card cresça junto com o parágrafo */
+    height: auto; 
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background: transparent; /* Deixamos transparente para focar no design limpo */
+}
+/* Adicione este bloco no seu style.css */
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Corta e ajusta a imagem no container sem distorcer */
+    display: block;    /* Remove espaços em branco indesejados embaixo da imagem */
+}
+.card-post {
+    overflow: hidden; /* Garante que os cantos arredondados da imagem não passem da borda do card */
+}
+/* Container que controla e isola o tamanho fixo padrão da foto */
+.card-image-wrapper {
+    height: 420px; /* Mantém a proporção visual que você tinha antes para as fotos */
+    border-radius: 5px;
+    overflow: hidden;
+    background: #ececec;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Espaçamento elegante e controle para a legenda do post */
+.paragrafoPost {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555555;
+    word-wrap: break-word; /* Evita que palavras gigantes quebrem o layout lateralmente */
+}
+
+footer{
+    margin-top:100px;
+    padding:40px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    border-top:1px solid #e5e5e5;
+    background:#f7f7f7;
+}
+
+.footer-logo{
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+.footer-links{
+    display:flex;
+    gap:25px;
+}
+
+.footer-links a{
+    text-decoration:none;
+    color:#777;
+    font-size:13px;
+    transition:.2s;
+}
+
+.footer-links a:hover{
+    color:#111;
+}
+
+footer p{
+    font-size:12px;
+    color:#999;
+    text-align:center;
+}
+/* ==========================================================================
+   TELA DE LOGIN (ESTILO MINIMALISTA & MODERNO)
+   ========================================================================== */
+
+/* Background específico para a tela de login */
+.login-body {
+    background: #f4f4f4; /* Um cinza ligeiramente mais profundo que o index para destacar o card */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Card central do formulário */
+.login-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 45px 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+/* Estilo do Logo no Login */
+.login-logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #111111;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 30px;
+    transition: opacity 0.2s;
+}
+
+.login-logo:hover {
+    opacity: 0.7;
+}
+
+/* Textos informativos */
+.login-container h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.login-subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 35px;
+}
+
+/* Estrutura do Formulário */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Grupo de Input com Ícone Integrado */
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 46px; /* Espaço para o ícone na esquerda */
+    border: 1px solid #e2e2e2;
+    border-radius: 8px;
+    background: #fafafa;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #111;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+/* Feedback visual quando o usuário clica no input */
+.input-group input:focus {
+    border-color: #111;
+    background: #fff;
+    box-shadow: 0 0 0 3px #1111110d;
+}
+
+.input-group input:focus + .input-icon {
+    color: #111; /* O ícone acende quando o input está ativo */
+}
+
+/* Opções adicionais (Lembrar-me e Esqueci Senha) */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #666;
+    margin-top: -5px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.remember-me input {
+    accent-color: #111; /* Cor customizada para o checkbox */
+    cursor: pointer;
+}
+
+.forgot-password {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.forgot-password:hover {
+    color: #b95c39; /* Detalhe na cor terracota do seu projeto original */
+}
+
+/* Botão de Login */
+.btn-login {
+    background: #111111;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn-login:hover {
+    background: #2a2a2a;
+}
+
+.btn-login:active {
+    transform: scale(0.98);
+}
+
+/* Rodapé do Login */
+.login-footer {
+    margin-top: 35px;
+    font-size: 13px;
+    color: #777;
+}
+
+.login-footer a {
+    color: #111;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+/* ==========================================================================
+   MODAL DE LOGOUT & EXCLUSÃO (ESTILO MINIMALISTA)
+   ========================================================================== */
+
+/* Fundo escurecido e desfocado */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #00000066;
+    backdrop-filter: blur(4px); /* Efeito de desfoque premium */
+    z-index: 2000; /* Fica acima de tudo, inclusive do menu lateral */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Quando o modal receber a classe active */
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Card central */
+.modal-card {
+    background: #ffffff;
+    width: 90%;
+    max-width: 400px;
+    padding: 35px 25px;
+    border-radius: 14px;
+    box-shadow: 0 20px 50px #00000026;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1);
+}
+
+/* Ícone superior */
+.modal-icon {
+    font-size: 24px;
+    color: #b95c39; /* Tom terracota do seu projeto */
+    background: rgba(185, 92, 57, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.modal-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.modal-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+/* Botões do Modal */
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Botão Cancelar */
+.btn-modal-cancel {
+    background: #f0f0f0;
+    color: #444;
+}
+
+.btn-modal-cancel:hover {
+    background: #e5e5e5;
+}
+
+/* Botão Confirmar Sair */
+.btn-modal-confirm {
+    background: #111111;
+    color: #ffffff;
+}
+
+.btn-modal-confirm:hover {
+    background: #b95c39; /* Muda para o terracota no hover indicando ação imperativa */
+}
+/* Container posicionado no canto superior direito do card */
+.card-options-container {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+/* Botão dos três pontinhos */
+.btn-options {
+    background: #fff;
+    backdrop-filter: blur(4px);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #333;
+    transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 2px 8px #0000001a;
+}
+
+/* Menu de Opções escondido por padrão */
+.options-menu {
+    position: absolute;
+    top: 38px;
+    right: 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px #0000001a;
+    min-width: 170px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.2s cubic-bezier(0.1, 0.7, 0.1, 1), transform 0.2s cubic-bezier(0.1, 0.7, 0.1, 1);
+}
+
+/* Classe ativada via JavaScript para abrir o menu */
+.options-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+/* ==========================================================================
+   BOTTOM SHEET (ESTILO INSTAGRAM PARA MOBILE)
+   ========================================================================== */
+
+/* Quando for o ID optionsModal, alinha o conteúdo na base (baixo) da tela */
+#optionsModal {
+    align-items: flex-end;
+}
+
+/* Base do menu que desliza */
+.bottom-sheet {
+    background: #ffffff;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px 16px 0 0; /* Bordas arredondadas no topo */
+    padding: 14px 0 30px 0;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+    
+    /* Estado inicial: escondido abaixo da tela */
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.1, 0.7, 0.1, 1);
+}
+
+/* Quando o overlay estiver ativo, traz o menu para cima */
+.modal-overlay.active .bottom-sheet {
+    transform: translateY(0);
+}
+
+/* Linha sutil indicativa de arrastar (estilo Instagram/iOS) */
+.sheet-drag-handle {
+    width: 40px;
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    margin: 0 auto 12px auto;
+}
+
+.sheet-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Itens de clique no mobile */
+.sheet-item {
+    background: none;
+    border: none;
+    padding: 16px 24px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #3e3e3e;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.sheet-item i {
+    font-size: 16px;
+    color: #666;
+    width: 20px;
+    text-align: center;
+}
+
+.sheet-item:active {
+    background-color: #f9f9f9;
+}
+
+/* Destaque para o botão de apagar no mobile */
+.sheet-item.btn-delete-post-mobile {
+    color: #df4747;
+}
+.sheet-item.btn-delete-post-mobile i {
+    color: #df4747;
+}
+
+/* Botão de Cancelar na base */
+.btn-sheet-cancel {
+    border-bottom: none;
+    font-weight: 600;
+    color: #111;
+    justify-content: center; /* Centraliza o texto "Cancelar" */
+    margin-top: 5px;
+}
+/* Remove qualquer efeito de hover enquanto o botão estiver no estado "Postando..." */
+#btnEnviarPost:disabled:hover {
+    background-color: #7a7a7a; /* Mantenha exatamente a mesma cor do botão desabilitado que você escolheu */
+    color: #ffffff;            /* Mantenha a mesma cor do texto */
+    opacity: 1;                /* Garante que a opacidade não mude no hover */
+    cursor: not-allowed;       /* Mantém o ícone de bloqueado no mouse */
+}
+/* ==========================================================================
+   ESTILOS EXCLUSIVOS DA GALERIA (DUAS POR LINHA OBRIGATÓRIO)
+   ========================================================================== */
+   .minha-galeria-section {
+    padding: 100px 24px 40px; /* Um espaço extra no topo para não sumir atrás do header */
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.galeria-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 15px;
+}
+
+.galeria-contador {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+/* OBRIGA duas colunas idênticas lado a lado (1fr 1fr) */
+.album-photos-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; 
+    gap: 24px !important;
+}
+
+/* Moldura para cada foto com proporção elegante de câmera */
+.album-photo-wrapper {
+    position: relative;
+    aspect-ratio: 4 / 3; 
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100% !important; /* Garante que preencha a coluna do par */
+    max-width: none !important; /* Remove qualquer trava do feed antigo */
+    margin: 0 !important; /* Remove o empilhamento centralizado */
+}
+
+.album-photo-wrapper:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.album-photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Botão Flutuante de Excluir da Galeria */
+.btn-delete-galeria {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #fffffff2;
+    color: #333;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px #0000001a;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.btn-delete-galeria:hover {
+    background: #ff3b30;
+    color: #fff;
+    transform: scale(1.08);
+}
+/* Espaçamento acima da data nos cards de posts */
+.card-date {
+    display: inline-block; /* Garante que a margem superior funcione corretamente */
+    margin-top: 8px; 
+    font-size: 14px;      /* Ajuste esse valor para mais ou para menos se preferir */
+}
+/* ==========================================================================
+   ESTILIZAÇÃO DA MENSAGEM DE FEED VAZIO
+   ========================================================================== */
+   .sem-registros {
+    grid-column: 1 / -1; /* Ocupa toda a largura do grid da galeria */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    margin: 20px auto;
+    color: #8e8e93;
+}
+
+.sem-registros i {
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: #c7c7cc;
+}
+
+.sem-registros p {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+/* Estilos para Modais do Sistema */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    transition: transform 0.2s ease;
+}
+
+.modal-overlay.active .modal-card {
+    transform: translateY(0);
+}
+
+.modal-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.modal-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.modal-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn-modal-confirm {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    width: 100%;
+}
+
+/* Ajuste responsivo para telas super pequenas de celular (opcional) */
+@media (max-width: 500px) {
+    .album-photos-grid {
+        grid-template-columns: 1fr !important; /* Vira 1 por linha apenas em telas minúsculas */
+        gap: 16px !important;
+    }
+}
+
+/* Ajustes de visibilidade responsiva */
+@media (min-width: 769px) {
+    #optionsModal {
+        display: none !important; /* Desativa completamente a estrutura mobile no Desktop */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Esconde o menu flutuante quadrado do desktop no mobile */
+    .options-menu {
+        display: none !important; 
+    }
+}
+/* Itens de dentro do menu */
+.menu-item {
+    background: none;
+    border: none;
+    padding: 12px 16px;
+    text-align: left;
+    font-family: inherit;
+    font-size: 13px;
+    color: #3e3e3e;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.15s;
+    width: 100%;
+}
+
+.menu-item i {
+    font-size: 14px;
+    color: #777;
+    width: 16px;
+}
+
+.menu-item:hover {
+    background-color: #f5f5f5;
+}
+
+/* Cor especial de aviso para o botão de apagar */
+.menu-item.btn-delete-post {
+    color: #df4747;
+}
+.menu-item.btn-delete-post i {
+    color: #df4747;
+}
+.menu-item.btn-delete-post:hover {
+    background-color: #fff5f5;
+}
+
+/* Certificar que o card-post aceita posicionamento absoluto interno */
+.card-post {
+    position: relative;
+}
+
+/* Ajuste sutil para telas muito pequenas de celular */
+@media (max-width: 400px) {
+    .login-container {
+        padding: 35px 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .content h1 {
+        font-size: 35px;
+        letter-spacing: -2px;
+    }
+    .content p{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        margin-left: 0;
+        font-size: 18px;
+        order: 1; 
+    }
+
+    /* Ocultamos apenas o bloco de perfil (se quiser) ou mantemos o container flex */
+    .actions {
+        order: 2; 
+        margin-left: auto;   /* Empurra as ações integradas para encostar na direita */
+        margin-right: 25px;  /* Controla a distância exata entre o botão e o ícone do menu */
+        gap: 10px;           /* Diminui o espaço interno caso use mais elementos */
+    }
+    
+    .actions button {
+        display: block;      /* Garante que o botão continue visível no mobile */
+        padding: 8px 15px;   /* Ajustado para dar uma proporção melhor ao formato redondo */
+        font-size: 15px;     /* Tamanho ideal para não quebrar a linha dentro do botão */
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-right: 0;     /* Remove a margem fixa de desktop para não quebrar o layout */
+        background-color: #3e3e3e; /* Cor de fundo solicitada */
+        color: #ffffff;            /* Cor do texto em branco para dar contraste */
+        border: none;              /* Remove bordas anteriores */
+        box-shadow: none;          /* Limpa sombras claras do desktop */
+        border-radius: 50px;       /* Cria o visual totalmente arredondado nas pontas (estilo pílula) */
+        cursor: pointer;
+    }
+    .actions button span{
+        display: none;
+    }
+
+    .menu {
+        display: block; 
+        order: 3; 
+    }
+   /* Procure por .nav-username dentro de @media (max-width: 768px) e substitua por: */
+   .logo .nav-username {
+    font-size: 13px; 
+    font-weight: 600; /* Ajusta o tamanho no mobile para não quebrar a linha */
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 6px;
+    color: #3e3e3e;
+    display: inline;  /* Garante que continue na mesma linha do logo */
+    position: static; /* Remove o posicionamento fixo/absoluto anterior */
+}
+
+    /* Menu lateral responsivo (Overlay animado) com links mais para cima */
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%; 
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        background-color: #ffffff;
+        box-shadow: -10px 0 30px #00000018;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; 
+        align-items: flex-start;
+        padding-top: 100px; 
+        gap: 40px;
+        z-index: 1001;
+        transition: right 0.4s cubic-bezier(0.1, 0.7, 0.1, 1);
+    }
+
+    /* ADICIONE OU CORRIJA ESTA LINHA EXATAMENTE ASSIM: */
+    nav.active {
+        right: 0 !important;
+    }
+
+    nav a {
+        font-size: 13px; 
+        margin-left: 30px;
+    }
+
+    .close-menu {
+        display: block;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        font-size: 13px;
+        cursor: pointer;
+        color: #111;
+    }
+
+    /* Seções e espaçamentos no Mobile */
+    .hero {
+        padding: 75px 24px 40px;
+    }
+
+    .recent {
+        padding: 0 24px 60px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+/* Procure por .card no seu mobile e altere para ficar assim: */
+.card {
+    height: auto; /* Garante que o card continue dinâmico no mobile */
+}
+
+
+
+/* Reduz a altura apenas da imagem no mobile para não ocupar a tela toda */
+.card-image-wrapper {
+    height: 320px; 
+}
+    
+    .right {
+        display: none; 
+    }
+    
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+}
+/* ==========================================================================
+   ESTILIZAÇÃO DA SEÇÃO DE PERFIL
+   ========================================================================== */
+.profile-section {
+    margin-top: 70px; /* Compensa o header fixo no desktop */
+    padding: 30px 70px 10px;
+    background-color: #f7f7f7;
+}
+
+.profile-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 25px;
+}
+
+/* Alinha a foto de perfil e os textos lado a lado */
+.profile-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Container da Foto de Perfil */
+.profile-avatar-container {
+    position: relative; /* OBRIGATÓRIO para ancorar o botão flutuante */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #e2e2e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible; /* Alterado de hidden para visible para o botão flutuante não cortar nas bordas */
+    border: 1px solid #00000014;
+    flex-shrink: 0; 
+}
+
+#avatar-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #777;
+}
+
+/* Garante que se você colocar uma tag <img> ela preencha perfeitamente o círculo */
+#avatar-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* NOVO: Botão de ação flutuante dinâmico (Lápis ou Lixeira) */
+.avatar-action-btn {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #f7f7f7;
+    background: #111111;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px #00000033;
+    transition: all 0.2s ease;
+    z-index: 5;
+}
+
+.avatar-action-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo alternativo quando o botão vira lixeira */
+.avatar-action-btn.delete-mode {
+    background: #ff3b30;
+}
+
+.profile-info h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.profile-info p {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Bloco do Contador de Visitantes */
+.profile-right {
+    text-align: center;
+}
+
+.counter-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.counter-number {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.5px;
+}
+
+.counter-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+/* ==========================================================================
+   AJUSTES RESPONSIVOS (MOBILE)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .profile-section {
+        margin-top: 60px; /* Ajuste para o header mobile */
+        padding: 20px 24px 0;
+    }
+
+    /* Reduz levemente o tamanho da foto no celular */
+    .profile-avatar-container {
+        width: 65px;
+        height: 65px;
+    }
+    
+    #avatar-content {
+        font-size: 24px;
+    }
+    
+    .avatar-action-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+
+    .counter-number {
+        font-size: 20px;
+    }
+}
